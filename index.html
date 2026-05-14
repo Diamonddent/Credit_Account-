@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب فتح حساب - شركة دياموند دينت</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --border: #dee2e6;
+            --bg: #f4f7f6;
+            --input-bg: #fdfdfd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: #333;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact; /* Ensures colors print correctly */
+            print-color-adjust: exact;
+        }
+
+
+        /* A4 Page Container */
+        .page {
+            width: 210mm;
+            height: 296mm; /* Slightly less than 297 to prevent accidental overflow */
+            margin: 20px auto;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .header-img { width: 100%; display: block; }
+        .footer-img { width: 100%; display: block; margin-top: auto; }
+
+        .content {
+            padding: 0 45px 10px 45px;
+            flex-grow: 1;
+        }
+
+        .main-title {
+            text-align: center;
+            margin-top: -5px;
+            margin-bottom: 15px;
+        }
+
+        .main-title h1 { font-size: 22px; color: var(--primary); margin-bottom: 2px; }
+        .main-title h2 { font-size: 15px; color: #7f8c8d; font-weight: 400; }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            border-right: 4px solid var(--accent);
+            padding: 3px 12px;
+            margin: 12px 0 8px 0;
+            background: #f8f9fa;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .field { display: flex; flex-direction: column; }
+        
+        label {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"] {
+            font-family: 'Cairo', sans-serif;
+            border: 1.2px solid var(--border);
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 14px;
+            background: var(--input-bg);
+            width: 100%;
+            outline: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        table th {
+            background: #f1f3f5;
+            font-size: 12px;
+            padding: 6px;
+            border: 1px solid var(--border);
+        }
+
+        table td { border: 1px solid var(--border); padding: 0; }
+
+        table input {
+            border: none !important;
+            border-radius: 0 !important;
+            height: 35px;
+            text-align: center;
+        }
+
+        .pledge-list { font-size: 14px; text-align: justify; }
+
+        .pledge-item {
+            margin-bottom: 6px;
+            padding-right: 28px;
+            position: relative;
+        }
+
+        .pledge-item .num {
+            position: absolute;
+            right: 0;
+            top: 2px;
+            background: var(--primary);
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .signature-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+            border-top: 2px solid var(--primary);
+            padding-top: 10px;
+        }
+
+        .sig-box { text-align: center; }
+        .sig-label { font-weight: 700; font-size: 14px; display: block; margin-bottom: 4px; }
+
+        .chamber-box {
+            margin-top: 25px;
+            border: 2px dashed #bdc3c7;
+            padding: 10px;
+            text-align: center;
+            color: #7f8c8d;
+            border-radius: 8px;
+            font-size: 12px;
+            min-height: 100px;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #95a5a6;
+        }
+
+        /* PRINT CONFIGURATION */
+        @page {
+            size: A4;
+            margin: 0; /* Important: removes browser headers/footers */
+        }
+
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                width: 210mm; 
+                height: 297mm;
+            }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="page">
+        <img src="assets/HEADER-1.svg" alt="Header" class="header-img">
+        <div class="content">
+            <div class="main-title">
+                <h1>طلب فتح حساب</h1>
+                <h2>Credit Account Application</h2>
+            </div>
+
+            <div class="form-row">
+                <div class="field"><label>التاريخ هجري</label><input type="text" placeholder="-- / -- / ----"></div>
+                <div class="field"><label>الموافق ميلادي</label><input type="text" placeholder="-- / -- / ----"></div>
+            </div>
+
+            <p style="font-size: 14px; margin-bottom: 8px;">يرجى التكرم بالموافقة على اعتمادنا ضمن عملائكم المخولين للشراء على الحساب الآجل وفقًا للبيانات التالية:</p>
+
+            <div class="section-title">أولاً: بيانات المنشأة</div>
+            <div class="form-row">
+                <div class="field" style="grid-column: span 2;"><label>الاسم التجاري</label><input type="text"></div>
+                <div class="field"><label>طبيعة النشاط</label><input type="text"></div>
+            </div>
+            <div class="form-row">
+                <div class="field"><label>رقم السجل التجاري</label><input type="text"></div>
+                <div class="field"><label>تاريخه</label><input type="text"></div>
+                <div class="field"><label>مصدره</label><input type="text"></div>
+            </div>
+            <div class="form-row">
+                <div class="field" style="grid-column: span 3;"><label>العنوان الكامل (المدينة/الحي)</label><input type="text"></div>
+            </div>
+            <div class="form-row">
+                <div class="field"><label>الشارع</label><input type="text"></div>
+                <div class="field"><label>الرمز البريدي</label><input type="text"></div>
+                <div class="field"><label>رقم الهاتف</label><input type="tel"></div>
+            </div>
+            <div class="form-row">
+                <div class="field"><label>رقم الموبايل</label><input type="tel"></div>
+                <div class="field" style="grid-column: span 2;"><label>البريد الإلكتروني</label><input type="email"></div>
+            </div>
+
+            <div class="section-title">ثانياً: بيانات المالك</div>
+            <table>
+                <thead>
+                    <tr><th>الاسم</th><th>الوظيفة</th><th>رقم الهوية</th><th>التوقيع</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text" disabled></td></tr>
+                    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text" disabled></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-number">1 | Page</div>
+        <img src="assets/FOOTER-1.svg" alt="Footer" class="footer-img">
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <img src="assets/HEADER-1.svg" alt="Header" class="header-img">
+        <div class="content">
+            <div class="section-title">التعهدات والشروط</div>
+            <p style="font-weight: 700; font-size: 14px; margin-bottom: 10px;">بموجب هذا الطلب فاني صاحب المنشأة أتعهد بالتالي:</p>
+            
+            <div class="pledge-list">
+                <div class="pledge-item"><div class="num">1</div>اشعاركم خطيا في حال تغير العناوين المسجلة والموضحة أعلاه في حينه.</div>
+                <div class="pledge-item"><div class="num">2</div>اشعاركم خطيا في حال تغيير أحد الأشخاص المفوضين أعلاه في حينه.</div>
+                <div class="pledge-item"><div class="num">3</div>نتعهد بسداد قيمة مسحوباتنا خلال فترة ستون يوما من استلام الفواتير.</div>
+                <div class="pledge-item"><div class="num">4</div>يحق لشركة دياموند دينت للتجارة في حال عدم التزامنا بالسداد إيقاف التوريد واتخاذ الإجراءات القانونية.</div>
+                <div class="pledge-item"><div class="num">5</div>نتعهد بتسديد كامل الرصيد، وفي حال بيع المنشأة نتحمل المسؤولية كاملة ونلتزم بإشعاركم قبل شهر.</div>
+                <div class="pledge-item"><div class="num">6</div>لا يتم ترحيل الديون إلى المالك الجديد إلا بعد الحصول على موافقة خطية من الشركة.</div>
+                <div class="pledge-item"><div class="num">7</div>يعتبر التوقيع والختم على أي كشف حساب بمثابة إقرار منا بصحة ما ورد به من مبالغ.</div>
+                <div class="pledge-item"><div class="num">8</div>الختم والتوقيع بالاستلام على الفاتورة يمثل اعترافاً منا بالدين المستحق ولا يجوز تأجيل الدفع.</div>
+                <div class="pledge-item"><div class="num">9</div>يحق للشركة فرض غرامة مالية قدرها 5% عن كل شهر تأخير في حال تجاوز الموعد.</div>
+                <div class="pledge-item"><div class="num">10</div>نتعهد بمطابقة كشف حسابنا لديكم في نهاية كل عام ميلادي وعند الطلب.</div>
+                <div class="pledge-item"><div class="num">11</div>نقر بصحة المعلومات المذكورة والالتزام بالشروط وننفي أي جهالة بها، والله خير الشاهدين.</div>
+            </div>
+
+            <div class="signature-section">
+                <div class="sig-box"><span class="sig-label">اسم المالك</span><input type="text"></div>
+                <div class="sig-box"><span class="sig-label">التوقيع</span><input type="text" disabled></div>
+                <div class="sig-box"><span class="sig-label">ختم المنشأة</span><input type="text" disabled></div>
+                <div class="sig-box"><span class="sig-label">التاريخ</span><input type="text"></div>
+            </div>
+
+            <div class="chamber-box">
+                <strong>مصادقة الغرفة التجارية</strong>
+            </div>
+        </div>
+        <div class="page-number">2 | Page</div>
+        <img src="assets/FOOTER-1.svg" alt="Footer" class="footer-img">
+    </div>
+
+    <!-- PAGE 3 -->
+<div class="page">
+    <img src="assets/HEADER-1.svg" alt="Header" class="header-img">
+    
+    <div class="content">
+        <!-- Administrative Section -->
+        <div class="section-title">خاص بشركة دياموند دينت (للاستعمال الإداري)</div>
+        
+        <div class="form-row">
+            <div class="field"><label>الفرع</label><input type="text"></div>
+            <div class="field"><label>اسم المندوب</label><input type="text"></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field"><label>مدير الفرع</label><input type="text"></div>
+            <div class="field"><label>الحد الائتماني</label><input type="text" placeholder="SAR"></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field"><label>مدير المنطقة</label><input type="text"></div>
+            <div class="field"><label>المدير المالي</label><input type="text"></div>
+        </div>
+
+        <!-- Required Documents Section -->
+        <div class="section-title">المستندات المطلوبة (يرجى إرفاقها)</div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; padding: 15px 10px; direction: rtl;">
+            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" class="checkbox-input">
+                <span>صورة هوية المالك</span>
+            </div>
+            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" class="checkbox-input">
+                <span>السجل التجاري (ساري)</span>
+            </div>
+            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" class="checkbox-input">
+                <span>شهادة القيمة المضافة</span>
+            </div>
+            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" class="checkbox-input">
+                <span>العنوان الوطني</span>
+            </div>
+            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" class="checkbox-input">
+                <span>ترخيص وزارة الصحة</span>
+            </div>
+            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" class="checkbox-input">
+                <span>صورة الوكالة (إن وجد)</span>
+            </div>
+        </div> 
+    </div> <!-- Close .content -->
+
+    <!-- Footer Section -->
+    <div class="page-number">3 | Page</div>
+    <img src="assets/FOOTER-1.svg" alt="Footer" class="footer-img">
+</div> <!-- Close .page -->
+
+</body>
+</html>
