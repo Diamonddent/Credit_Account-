@@ -16,21 +16,18 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* General Body Styling */
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--bg);
             color: #333;
             line-height: 1.4;
-            -webkit-print-color-adjust: exact; /* Ensures colors print correctly */
+            -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
 
-
-        /* A4 Page Container */
         .page {
             width: 210mm;
-            height: 296mm; /* Slightly less than 297 to prevent accidental overflow */
+            height: 296mm;
             margin: 20px auto;
             background: #fff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -52,7 +49,7 @@
         .main-title {
             text-align: center;
             margin-top: -5px;
-            margin-bottom: 15px;
+            margin-bottom: 26px;
         }
 
         .main-title h1 { font-size: 22px; color: var(--primary); margin-bottom: 2px; }
@@ -141,18 +138,27 @@
             font-weight: bold;
         }
 
+        /* --- Updated Signature Section --- */
         .signature-section {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin-top: 20px;
             border-top: 2px solid var(--primary);
-            padding-top: 10px;
+            padding-top: 15px;
         }
 
-        .sig-box { text-align: center; }
-        .sig-label { font-weight: 700; font-size: 14px; display: block; margin-bottom: 4px; }
-
+        .sig-box { display: flex; flex-direction: column; }
+        .sig-label { font-weight: 700; font-size: 14px; display: block; margin-bottom: 5px; color: var(--primary); }
+        
+        /* Specific height for the seal area */
+        .sig-box.large input {
+            height: 160px !important; /* Forces height to match width */
+    width: 160px !important;
+    border: 2px solid var(--border); /* Makes the square visible */
+    background: #fff;
+        }
+        
         .chamber-box {
             margin-top: 25px;
             border: 2px dashed #bdc3c7;
@@ -173,27 +179,18 @@
             color: #95a5a6;
         }
 
-        /* PRINT CONFIGURATION */
-        @page {
-            size: A4;
-            margin: 0; /* Important: removes browser headers/footers */
-        }
+        @page { size: A4; margin: 0; }
 
         @media print {
             body { background: none; margin: 0; padding: 0; }
-            .page { 
-                margin: 0; 
-                box-shadow: none; 
-                width: 210mm; 
-                height: 297mm;
-            }
+            .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
             .no-print { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- PAGE 1 -->
+    <!-- PAGE 1 (Omitted for brevity, but stays same) -->
     <div class="page">
         <img src="assets/HEADER-1.svg" alt="Header" class="header-img">
         <div class="content">
@@ -201,14 +198,11 @@
                 <h1>طلب فتح حساب</h1>
                 <h2>Credit Account Application</h2>
             </div>
-
             <div class="form-row">
                 <div class="field"><label>التاريخ هجري</label><input type="text" placeholder="-- / -- / ----"></div>
                 <div class="field"><label>الموافق ميلادي</label><input type="text" placeholder="-- / -- / ----"></div>
             </div>
-
             <p style="font-size: 14px; margin-bottom: 8px;">يرجى التكرم بالموافقة على اعتمادنا ضمن عملائكم المخولين للشراء على الحساب الآجل وفقًا للبيانات التالية:</p>
-
             <div class="section-title">أولاً: بيانات المنشأة</div>
             <div class="form-row">
                 <div class="field" style="grid-column: span 2;"><label>الاسم التجاري</label><input type="text"></div>
@@ -231,7 +225,6 @@
                 <div class="field"><label>رقم الموبايل</label><input type="tel"></div>
                 <div class="field" style="grid-column: span 2;"><label>البريد الإلكتروني</label><input type="email"></div>
             </div>
-
             <div class="section-title">ثانياً: بيانات المالك</div>
             <table>
                 <thead>
@@ -268,10 +261,13 @@
                 <div class="pledge-item"><div class="num">11</div>نقر بصحة المعلومات المذكورة والالتزام بالشروط وننفي أي جهالة بها، والله خير الشاهدين.</div>
             </div>
 
+            <!-- MODIFIED SECTION -->
             <div class="signature-section">
                 <div class="sig-box"><span class="sig-label">اسم المالك</span><input type="text"></div>
                 <div class="sig-box"><span class="sig-label">التوقيع</span><input type="text" disabled></div>
-                <div class="sig-box"><span class="sig-label">ختم المنشأة</span><input type="text" disabled></div>
+                
+                <div class="sig-box large full-width"><span class="sig-label">ختم المنشأة</span><input type="text" disabled></div>
+                
                 <div class="sig-box"><span class="sig-label">التاريخ</span><input type="text"></div>
             </div>
 
@@ -283,64 +279,41 @@
         <img src="assets/FOOTER-1.svg" alt="Footer" class="footer-img">
     </div>
 
-    <!-- PAGE 3 -->
-<div class="page">
-    <img src="assets/HEADER-1.svg" alt="Header" class="header-img">
-    
-    <div class="content">
-        <!-- Administrative Section -->
-        <div class="section-title">خاص بشركة دياموند دينت (للاستعمال الإداري)</div>
-        
-        <div class="form-row">
-            <div class="field"><label>الفرع</label><input type="text"></div>
-            <div class="field"><label>اسم المندوب</label><input type="text"></div>
-        </div>
-        
-        <div class="form-row">
-            <div class="field"><label>مدير الفرع</label><input type="text"></div>
-            <div class="field"><label>الحد الائتماني</label><input type="text" placeholder="SAR"></div>
-        </div>
-        
-        <div class="form-row">
-            <div class="field"><label>مدير المنطقة</label><input type="text"></div>
-            <div class="field"><label>المدير المالي</label><input type="text"></div>
-        </div>
-
-        <!-- Required Documents Section -->
-        <div class="section-title">المستندات المطلوبة (يرجى إرفاقها)</div>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; padding: 15px 10px; direction: rtl;">
-            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" class="checkbox-input">
-                <span>صورة هوية المالك</span>
+    <!-- PAGE 3 (Stays same) -->
+    <div class="page">
+        <img src="assets/HEADER-1.svg" alt="Header" class="header-img">
+        <div class="content">
+            <div class="section-title">خاص بشركة دياموند دينت (للاستعمال الإداري)</div>
+            <div class="form-row">
+                <div class="field"><label>الفرع</label><input type="text"></div>
+                <div class="field"><label>اسم المندوب</label><input type="text"></div>
             </div>
-            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" class="checkbox-input">
-                <span>السجل التجاري (ساري)</span>
+            <div class="form-row">
+                <div class="field"><label>مدير الفرع</label><input type="text"></div>
+                <div class="field"><label>الحد الائتماني</label><input type="text" placeholder="SAR"></div>
             </div>
-            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" class="checkbox-input">
-                <span>شهادة القيمة المضافة</span>
+		<div class="main-title">
+                <p style="font-weight: 700; font-size: 24px; margin-bottom: 10px;">الإدارة:</p>
+           	 <div class="signature-section">
+		<div class="sig-box"><span class="sig-label">مدير المنطقة</span><input type="text" disabled></div>
+		<div class="sig-box"><span class="sig-label">مدير الوحدة</span><input type="text" disabled></div>
+		<div class="sig-box"><span class="sig-label">محاسب الفرع</span><input type="text" disabled></div>
+		<div class="sig-box"><span class="sig-label">المدير المالي</span><input type="text" disabled></div>	
             </div>
-            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" class="checkbox-input">
-                <span>العنوان الوطني</span>
-            </div>
-            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" class="checkbox-input">
-                <span>ترخيص وزارة الصحة</span>
-            </div>
-            <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;">
-                <input type="checkbox" class="checkbox-input">
-                <span>صورة الوكالة (إن وجد)</span>
-            </div>
-        </div> 
-    </div> <!-- Close .content -->
-
-    <!-- Footer Section -->
-    <div class="page-number">3 | Page</div>
-    <img src="assets/FOOTER-1.svg" alt="Footer" class="footer-img">
-</div> <!-- Close .page -->
-
+            <div class="section-title" style="margin-top: 40px;">المستندات المطلوبة (يرجى إرفاقها)</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; padding: 15px 10px; direction: rtl;">
+                <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;"><input type="checkbox"> <span>صورة هوية المالك</span></div>
+                <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;"><input type="checkbox"> <span>السجل التجاري (ساري)</span></div>
+                <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;"><input type="checkbox"> <span>شهادة القيمة المضافة</span></div>
+                <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;"><input type="checkbox"> <span>العنوان الوطني</span></div>
+                <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;"><input type="checkbox"> <span>ترخيص وزارة الصحة</span></div>
+                <div class="checklist-item" style="display: flex; align-items: center; gap: 8px;"><input type="checkbox"> <span>صورة الوكالة (إن وجد)</span>			</div>
+            </div> 
+        <!-- Fixed Footer Area -->
+    <div class="footer-container" style="position: absolute; bottom: 0; left: 0; width: 100%;">
+        <div class="page-number" style="text-align: center; margin-bottom: 5px; font-family: sans-serif;">3 | Page</div>
+        <img src="assets/FOOTER-1.svg" alt="Footer" class="footer-img" style="width: 100%; display: block;">
+    </div>
+</div>
 </body>
 </html>
